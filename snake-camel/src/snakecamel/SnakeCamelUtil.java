@@ -2,16 +2,16 @@ package snakecamel;
 
 public class SnakeCamelUtil {
 	
-	public static String snakeToCamelcase(String snake_case) {
+	public static String snakeToCamelcase(String snake_case) { //連結の最後が非表示だったので表示できるように修正
 		String[] words = snake_case.split("_");
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < words.length - 1; i++) {
+		for (int i = 0; i < words.length; i++) {
 			sb.append(capitalize(words[i]));
 		}
 		return new String(sb);
 	}
 	 
-	public static String camelToSnakecase(String camelcase) {
+	public static String camelToSnakecase(String camelcase) { //小文字にしたはずの大文字が再び表示されていたので修正
 		StringBuilder sb = new StringBuilder();
 		int j = 0;
 		for (int i = 0; i < camelcase.length(); i++) {
@@ -22,7 +22,7 @@ public class SnakeCamelUtil {
 					sb.append("_");
 				}
 				sb.append(Character.toLowerCase(c));
-				j = i;
+				j = i + 1;
 			}
 		}
 		sb.append(camelcase.substring(j));
